@@ -1,4 +1,5 @@
 from pydantic import BaseModel
 
-class CareerRequest(BaseModel):
-    query: str
+class AskRequest(BaseModel):
+    query: str | None = None
+    topic: str | None = None
