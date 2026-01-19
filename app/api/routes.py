@@ -1,10 +1,9 @@
 from fastapi import APIRouter
-from app.schemas.request import CareerRequest
-from app.agent.career_agent import career_agent
+from app.agent.career_agent import ask_ai
+from app.schemas.request import AskRequest
 
 router = APIRouter()
 
-@router.post("/career")
-async def career_advice(data: CareerRequest):
-    result = await career_agent.run(data.query)
-    return {"response": result.data}
+@router.post("/ask")
+async def ask(req: AskRequest):
+    return await ask_ai(req)
