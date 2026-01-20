@@ -8,7 +8,7 @@ model = OpenAIChatModel(
 
 agent = Agent(
     model=model,
-    system_prompt="Answer the question clearly and directly."
+    system_prompt="You are a helpful AI study assistant."
 )
 
 async def ask_ai(question: str) -> str:
