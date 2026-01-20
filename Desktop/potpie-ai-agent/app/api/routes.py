@@ -4,7 +4,6 @@ from app.agent.career_agent import ask_ai
 
 router = APIRouter()
 
-@router.post("/ask")
+@router.post("/ask", tags=["AI"])
 async def ask(req: AskRequest):
-    answer = await ask_ai(req.question)
-    return {"answer": answer}
+    return {"answer": await ask_ai(req.question)}
