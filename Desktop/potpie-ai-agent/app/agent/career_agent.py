@@ -4,7 +4,7 @@ from pydantic_ai.models.openai import OpenAIModel
 
 model = OpenAIModel(
     model_name="mistralai/mistral-7b-instruct",
-    api_key=os.environ["OPENROUTER_API_KEY"],
+    api_key=os.environ["OPENAI_API_KEY"],
     provider="openrouter"
 )
 
