@@ -1,9 +1,15 @@
-﻿from pydantic_ai import Agent
+﻿import os
+from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIChatModel
 from pydantic_ai.providers.openai import OpenAIProvider
 
 provider = OpenAIProvider(
-    base_url="https://openrouter.ai/api/v1"
+    base_url="https://openrouter.ai/api/v1",
+    api_key=os.getenv("OPENAI_API_KEY"),
+    default_headers={
+        "HTTP-Referer": "https://pydantic-ai-agent.onrender.com",
+        "X-Title": "Potpie AI Agent"
+    }
 )
 
 model = OpenAIChatModel(
@@ -13,7 +19,7 @@ model = OpenAIChatModel(
 
 agent = Agent(
     model=model,
-    system_prompt="You are a helpful AI study assistant. Answer any question clearly."
+    system_prompt="You are a helpful AI assistant. Answer exactly what the user asks."
 )
 
 async def ask_ai(question: str) -> str:
