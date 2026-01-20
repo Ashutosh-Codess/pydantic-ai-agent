@@ -2,10 +2,14 @@
 from pydantic_ai.models.openai import OpenAIChatModel
 
 model = OpenAIChatModel(
-    model_name="mistralai/mistral-7b-instruct"
+    model_name="mistralai/mistral-7b-instruct",
+    provider="openrouter"
 )
 
-agent = Agent(model)
+agent = Agent(
+    model=model,
+    system_prompt="Answer the question clearly and directly."
+)
 
 async def ask_ai(question: str) -> str:
     result = await agent.run(question)
