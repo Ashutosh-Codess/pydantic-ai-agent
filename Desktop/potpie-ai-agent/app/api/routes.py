@@ -6,5 +6,5 @@ router = APIRouter()
 
 @router.post("/ask")
 async def ask(request: AskRequest):
-    response = await ask_ai(request.query)
-    return {"response": response}
+    answer = await ask_ai(request.query)
+    return { "response": answer }
